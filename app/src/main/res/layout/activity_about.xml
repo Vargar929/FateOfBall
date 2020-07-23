@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="272dp"
+        android:layout_height="367dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/magic8ball_clear"
+        android:alpha="0.8"
+        android:layout_gravity="center"
+        android:contentDescription="MagicBAll"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:text="@string/about_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center|center_horizontal" />
+
+</LinearLayout>

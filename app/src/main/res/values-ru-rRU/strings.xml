@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Судьба</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_about">Оо мне</string>
+    <string name="about_text">Этот "волшебный шар судьбы" ответит вам наш вопрос.\n
+        Для этого переверните иди встряхните устройство.\n
+        Подождите, пока оно не будет вибрировать.\n
+        После этого читайте ответ !.\n
+        Наслаждайтесь!</string>
+    <string-array name="responses">
+        <item>Бесспорно</item>
+        <item>Предрешено</item>
+        <item>Никаких \n сомнений</item>
+        <item>Определённо \n «Да»</item>
+        <item>Можешь быть \n уверен \n в этом</item>
+        <item>Мне кажется \n «Да»</item>
+        <item>Вероятнее\n всего</item>
+        <item>Хорошие\n перспективы</item>
+        <item>Да</item>
+        <item>Знаки говорят \n  «Да»</item>
+        <item>Не вижу,\n попробуй снова</item>
+        <item>Спроси позже</item>
+        <item>Лучше \n не рассказывать</item>
+        <item>Сейчас нельзя\n предсказать</item>
+        <item>Сконцентрируйся! \nИ спроси\n опять</item>
+        <item>Даже \n не думай</item>
+        <item>Мой ответ \n  «Нет»</item>
+        <item>Определённо \n «Нет»</item>
+        <item>Перспективы \n не очень</item>
+        <item>Весьма\n сомнительно</item>
+    </string-array>
+</resources>
