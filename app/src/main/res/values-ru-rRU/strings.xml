@@ -8,6 +8,8 @@
         Подождите, пока оно не будет вибрировать.\n
         После этого читайте ответ !.\n
         Наслаждайтесь!</string>
+    <string name="item_demo">Никаких\n сомнений</string>
+    <string name="ball_power_label">Заряд шара:</string>
     <string-array name="responses">
         <item>Бесспорно</item>
         <item>Предрешено</item>
@@ -30,4 +32,12 @@
         <item>Перспективы \n не очень</item>
         <item>Весьма\n сомнительно</item>
     </string-array>
+    <string name="ps_vibro_set">Настройки вибрации</string>
+    <string name="ps_vibro_off">Отключить вибрацию</string>
+    <string name="ps_vibro_dur">Продолжительность вибрации</string>
+    <string name="ps_sound_set">Настройки звука</string>
+    <string name="ps_sound_off">Выключить звук</string>
+    <string name="ps_additionaaly">Дополнительно</string>
+    <string name="ps_no_ads">Убрать рекламу</string>
+    <string name="ps_by_vip">Купить привилегии</string>
 </resources>

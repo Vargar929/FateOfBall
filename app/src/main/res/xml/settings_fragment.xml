@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/ps_vibro_set"
+        app:icon="@drawable/ic_vibro">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/ps_sw_vibro"
+            android:title="@string/ps_vibro_off" />
+        <ListPreference
+            android:entries="@array/entries_list_vibro"
+            android:entryValues="@array/entry_values_list_vibro"
+            android:key="@string/ps_ls_vibro"
+            android:title="@string/ps_vibro_dur" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/ps_sound_set">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/ps_sw_sound"
+            android:title="@string/ps_sound_off"
+            app:icon="@drawable/ic_music_off" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:defaultValue="false"
+        android:key="switch_preference_1"
+        android:title="@string/ps_additionaaly">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_ad_block"
+            android:key="@string/ps_sw_ads"
+            android:title="@string/ps_no_ads" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_vip_label"
+            android:key="@string/ps_sw_vip"
+            android:title="@string/ps_by_vip" />
+    </PreferenceCategory>
+</PreferenceScreen>

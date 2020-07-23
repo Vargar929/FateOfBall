@@ -1,12 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <string-array name="entries_list_vibro">
+        <item>0.5 sec</item>
+        <item>1 sec</item>
+        <item>1.5 sec</item>
+        <item>2.0 sec</item>
+        <item>3.0 sec</item>
     </string-array>
-
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
+    <string-array name="entry_values_list_vibro">
+        <item>500</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+        <item>3000</item>
     </string-array>
 </resources>
