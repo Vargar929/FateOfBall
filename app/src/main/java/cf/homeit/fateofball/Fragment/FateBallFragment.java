@@ -20,11 +20,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -38,7 +39,6 @@ import java.io.InputStream;
 import java.util.Collections;
 import java.util.Random;
 
-import cf.homeit.fateofball.Activity.MainActivity;
 import cf.homeit.fateofball.Auxiliary.Constants;
 import cf.homeit.fateofball.Interpolator.MyBounceInterpolator;
 import cf.homeit.fateofball.R;
@@ -49,15 +49,19 @@ import static cf.homeit.fateofball.Auxiliary.Constants.FADEOUT_DURATION;
 import static cf.homeit.fateofball.Auxiliary.Constants.RAND_INT_MAX;
 import static cf.homeit.fateofball.Auxiliary.Constants.UPSIDE_DOWN_MIN_COUNT;
 import static cf.homeit.fateofball.Auxiliary.Constants.VIBRATE_TIME;
-import static cf.homeit.fateofball.Auxiliary.Constants.mBackground;
 import static cf.homeit.fateofball.Auxiliary.Constants.mRotationMatrix;
 import static cf.homeit.fateofball.Auxiliary.Constants.mSensorZ;
 import static cf.homeit.fateofball.Auxiliary.Constants.mUpsideDownCounter;
 
 public class FateBallFragment extends Fragment implements SensorEventListener, View.OnClickListener {
     public final Random mRandomizer = new Random();
-    private final String TAG = MainActivity.class.getSimpleName();
+    private final String TAG = FateBallFragment.class.getSimpleName();
     private TextView mPrediction;
+    private ConstraintLayout clbg;
+    private SensorManager mSensorManager;
+    private Sensor mSensor;
+    private Vibrator mVibrator;
+    private AdView mAdView;
     private final CountDownTimer mTimer = new CountDownTimer(FADEIN_DURATION + Constants.PREDICTION_DURATION, 1000) {
         public void onTick(long millisUntilFinished) {
         }
@@ -66,16 +70,7 @@ public class FateBallFragment extends Fragment implements SensorEventListener, V
             hidePrediction();
         }
     };
-    private ConstraintLayout clbg;
-    private SensorManager mSensorManager;
-    private Sensor mSensor;
-    private Vibrator mVibrator;
-    private AdView mAdView;
-    private ImageView bAbout, bSettings;
     private DBHelper dbHelper;
-
-    public FateBallFragment() {
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,23 +86,12 @@ public class FateBallFragment extends Fragment implements SensorEventListener, V
         }
     }
 
-    @Override
-    public void onPause() {
-        desactivateSensorListener();
-        super.onPause();
-    }
+    private ImageView bAbout, bSettings, bFob;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_main, container, false);
-        dbHelper = new DBHelper(getActivity().getApplicationContext());
-        associateElements(view);
-        mPrediction.setVisibility(TextView.INVISIBLE);
-        assocSensors();
-        loadImageFromAsset(mBackground, clbg);
-        adsViewsEngine();
-        return view;
+    public void onPause() {
+        deactivateSensorListener();
+        super.onPause();
     }
 
     @Override
@@ -126,35 +110,38 @@ public class FateBallFragment extends Fragment implements SensorEventListener, V
     }
 
     @Override
-    public void onClick(View v) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_main, container, false);
+        associateElements(view);
+//        loadImageFromAsset(mBackground, clbg);
+        assocSensors();
+        adsViewsEngine();
+        dbHelper = new DBHelper(getActivity().getApplicationContext());
+        mPrediction.setVisibility(TextView.INVISIBLE);
         bAbout.setOnClickListener(this);
+        bFob.setOnClickListener(this);
         bSettings.setOnClickListener(this);
-        switch (v.getId()) {
-            case R.id.action_about:
-//                Intent intent = new Intent(this, AboutActivity.class);
-//                startActivity(intent);
-                break;
-            case R.id.action_settings:
-                Toast toast = Toast.makeText(requireActivity().getApplicationContext(),
-                        "Settings", Toast.LENGTH_SHORT);
-                toast.show();
-                break;
-        }
 
+        return view;
     }
 
-    public void loadImageFromAsset(String fileName, ConstraintLayout cl) {
-        try {
-            // получаем входной поток
-            InputStream ims = requireActivity().getAssets().open(fileName);
-            // загружаем как Drawable
-            Drawable d = Drawable.createFromStream(ims, null);
-            // выводим картинку в ImageView
-            cl.setBackground(d);
-        } catch (IOException ex) {
-            return;
+    @Override
+    public void onClick(View v) {
+        NavController navController;
+        navController = Navigation.findNavController(requireActivity(), R.id.first_nav_host);
+        switch (v.getId()) {
+            case R.id.action_about:
+                navController.navigate(R.id.aboutFragment);
+                break;
+            case R.id.action_settings:
+                navController.navigate(R.id.settingsFragment);
+                break;
+            case R.id.eight_ball:
+                onPredictTestBClicked();
+                break;
         }
+
     }
 
     protected boolean isReadyToPredict(float z) {
@@ -205,6 +192,27 @@ public class FateBallFragment extends Fragment implements SensorEventListener, V
         return false;
     }
 
+    public void loadImageFromAsset(String fileName, ConstraintLayout cl) {
+//        String filename = "dubi2.png";
+        InputStream inputStream = null;
+        try {
+            inputStream = requireActivity().getApplicationContext().getAssets().open(fileName);
+            Drawable drawable = Drawable.createFromStream(inputStream, null);
+            cl.setBackground(drawable);
+//            imageView.setImageDrawable(drawable);
+//            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (inputStream != null)
+                    inputStream.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     /**
      * Method to enable sensor when app is restored
      */
@@ -215,14 +223,14 @@ public class FateBallFragment extends Fragment implements SensorEventListener, V
     /**
      * Method to disable sensor when app is paused
      */
-    protected void desactivateSensorListener() {
+    protected void deactivateSensorListener() {
         mSensorManager.unregisterListener(this);
     }
 
     /**
      * Testing method responding on button click
      */
-    public void onPredictTestBClicked(View view) {
+    public void onPredictTestBClicked() {
         startPrediction();
     }
 
@@ -282,6 +290,7 @@ public class FateBallFragment extends Fragment implements SensorEventListener, V
         mAdView = v.findViewById(R.id.ad_view);
         mPrediction = v.findViewById(R.id.prediction);
         clbg = v.findViewById(R.id.main_cl);
+        bFob = v.findViewById(R.id.eight_ball);
         bAbout = v.findViewById(R.id.action_about);
         bSettings = v.findViewById(R.id.action_settings);
     }

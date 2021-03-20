@@ -18,10 +18,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         addPreferencesFromResource(R.xml.settings_fragment);
-//        setPreferencesFromResource(R.xml.settings_fragment);
-
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
         onSharedPreferenceChanged(sharedPreferences, getString(R.string.ps_sw_vibro));
         onSharedPreferenceChanged(sharedPreferences, getString(R.string.ps_ls_vibro));
         onSharedPreferenceChanged(sharedPreferences, getString(R.string.ps_sw_sound));
@@ -32,7 +29,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     @Override
     public void onResume() {
         super.onResume();
-        //unregister the preferenceChange listener
         getPreferenceScreen().getSharedPreferences()
                 .registerOnSharedPreferenceChangeListener(this);
     }
@@ -41,21 +37,21 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference preference = findPreference(key);
         if (preference instanceof ListPreference) {
-            ListPreference listPreference = (ListPreference) preference;
-            int prefIndex = listPreference.findIndexOfValue(sharedPreferences.getString(key, ""));
+            mListPreference = (ListPreference) preference;
+            int prefIndex = mListPreference.findIndexOfValue(sharedPreferences.getString(key, ""));
             if (prefIndex >= 0) {
-                preference.setSummary(listPreference.getEntries()[prefIndex]);
+                preference.setSummary(mListPreference.getEntries()[prefIndex]);
             }
         } else {
-            preference.setSummary(sharedPreferences.getString(key, ""));
-
+//            preference.setSummary(sharedPreferences.getString(key, ""));
+            preference.setEnabled(sharedPreferences.getBoolean(key, false));
         }
+        
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        //unregister the preference change listener
         getPreferenceScreen().getSharedPreferences()
                 .unregisterOnSharedPreferenceChangeListener(this);
     }

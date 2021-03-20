@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--Google Play game services IDs. Save this file as res/values/games-ids.xml in your project.-->
+<resources>
+    <!--app_id-->
+    <string name="game_app_id" translatable="false">416222357411</string>
+    <!--package_name-->
+    <string name="package_name" translatable="false">cf.homeit.fateofball</string>
+    <!--achievement Shake-->
+    <string name="achievement_shake" translatable="false">CgkIo8-kxo4MEAIQAQ</string>
+    <!--achievement Master of asking questions-->
+    <string name="achievement_master_of_asking_questions" translatable="false">CgkIo8-kxo4MEAIQAg</string>
+</resources>

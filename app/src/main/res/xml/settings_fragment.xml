@@ -7,9 +7,17 @@
         app:icon="@drawable/ic_vibro">
 
         <SwitchPreference
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
             android:defaultValue="false"
+            android:disableDependentsState="true"
+            android:focusable="auto"
             android:key="@string/ps_sw_vibro"
-            android:title="@string/ps_vibro_off" />
+            android:switchTextOff="OFF"
+            android:switchTextOn="ON"
+            android:title="@string/ps_vibro_off"
+            android:visibility="visible" />
         <ListPreference
             android:entries="@array/entries_list_vibro"
             android:entryValues="@array/entry_values_list_vibro"
@@ -18,9 +26,14 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/ps_sound_set">
         <SwitchPreference
+            android:clickable="true"
             android:defaultValue="false"
+            android:disableDependentsState="false"
+            android:enabled="true"
+            android:focusable="auto"
             android:key="@string/ps_sw_sound"
             android:title="@string/ps_sound_off"
+            app:enabled="true"
             app:icon="@drawable/ic_music_off" />
     </PreferenceCategory>
     <PreferenceCategory
@@ -29,14 +42,26 @@
         android:title="@string/ps_additionaaly">
 
         <SwitchPreference
+            android:clickable="true"
+
             android:defaultValue="false"
+            android:disableDependentsState="false"
+            android:enabled="true"
+            android:focusable="auto"
             android:icon="@drawable/ic_ad_block"
             android:key="@string/ps_sw_ads"
-            android:title="@string/ps_no_ads" />
+            android:title="@string/ps_no_ads"
+            app:enabled="true" />
         <SwitchPreference
+            android:clickable="true"
+
             android:defaultValue="false"
+            android:disableDependentsState="false"
+            android:enabled="true"
+            android:focusable="auto"
             android:icon="@drawable/ic_vip_label"
             android:key="@string/ps_sw_vip"
-            android:title="@string/ps_by_vip" />
+            android:title="@string/ps_by_vip"
+            app:enabled="true" />
     </PreferenceCategory>
 </PreferenceScreen>

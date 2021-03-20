@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main.xml"
+    app:startDestination="@id/fateBallFragment">
+
+    <fragment
+        android:id="@+id/fateBallFragment"
+        android:name="cf.homeit.fateofball.Fragment.FateBallFragment"
+        android:label="FateBallFragment"
+        tools:layout="@layout/activity_main">
+        <action
+            android:id="@+id/action_fateBallFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_fateBallFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="cf.homeit.fateofball.Fragment.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="cf.homeit.fateofball.Fragment.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/activity_about" />
+</navigation>

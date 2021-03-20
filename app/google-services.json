@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "416222357411",
+    "firebase_url": "https://fate-of-ball.firebaseio.com",
+    "project_id": "fate-of-ball",
+    "storage_bucket": "fate-of-ball.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416222357411:android:8f87a47f9b386ed9c9dc16",
+        "android_client_info": {
+          "package_name": "cf.homeit.fateofball"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416222357411-uc1p14caeq4b008ftfmj93d418h9ctem.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cf.homeit.fateofball",
+            "certificate_hash": "81e02d72a7264235d925a2ea320d2871a44289a7"
+          }
+        },
+        {
+          "client_id": "416222357411-eb40jqdrv6qj1lvr2vukhmuk7iuk85t7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpAHmHBAO22j3iefce-CkoVQ8Rw6AyhfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416222357411-eb40jqdrv6qj1lvr2vukhmuk7iuk85t7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-4735837536407260~9931599916"
+    }
+  ],
+  "configuration_version": "1"
+}

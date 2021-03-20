@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/wall"
-    tools:context=".Activity.MainActivity">
+    >
 
 
     <ImageView
@@ -21,7 +21,8 @@
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
-        android:onClick="onPredictTestBClicked"
+        android:clickable="true"
+        android:focusable="true"
         android:src="@drawable/ic_method_draw_image"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +76,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:typeface="normal"
-        ads:layout_constraintBottom_toTopOf="@+id/action_settings"
+        ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintTop_toBottomOf="@+id/ad_view" />
@@ -101,7 +102,8 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/bacground_label_down"
         android:gravity="start"
-        android:onClick="onClick"
+        android:clickable="true"
+        android:focusable="true"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:srcCompat="@drawable/ic_question"
@@ -117,7 +119,8 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/bacground_label_down"
         android:gravity="end"
-        android:onClick="onClick"
+        android:clickable="true"
+        android:focusable="true"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintStart_toStartOf="parent"
         ads:srcCompat="@drawable/ic_settings"
